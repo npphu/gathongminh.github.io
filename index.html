@@ -1,49 +1,213 @@
-<!-- index.html cho trang Gà Thông Minh -->
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <link rel="icon" type="image/png" href="logo.png">
-  <base href="/gathongminh.github.io/">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gà Thông Minh</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyen Phuoc Phu - Fullstack Developer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
-    body {
-      margin: 0;
-      font-family: 'Fira Code', monospace;
-      background-color: #111827;
-      color: #f9fafb;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
+    :root {
+      --eclipse-bg: #1b1e2b;
+      --eclipse-fg: #c7d0d9;
+      --eclipse-blue: #3b9aff;
+      --eclipse-green: #a6e22e;
     }
-    .logo {
-      max-width: 200px;
-      border-radius: 16px;
-      margin-bottom: 20px;
+    
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
     }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+    @keyframes blink {
+      50% { border-color: transparent }
     }
-    p {
-      opacity: 0.8;
+    .glow-icon:hover {
+      filter: drop-shadow(0 0 5px #3b9aff);
+      transform: scale(1.1);
+      transition: all 0.3s ease;
     }
-    .tag {
-      color: #10b981;
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
-  </style>
+    @keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+  .light-mode .theme-toggle {
+    background-color: #2b6cb0 !important;
+    color: white !important;
+    border-color: #2b6cb0 !important;
+  }
+  .blinking-cursor {
+    font-weight: bold;
+    color: #3b9aff;
+    animation: blink-caret 0.8s step-start infinite;
+  }
+  @keyframes blink-caret {
+    50% { opacity: 0; }
+  }
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fade-in-visible");
+        }
+      });
+    });
+    document.querySelectorAll(".animate-fade-in").forEach((el) => observer.observe(el));
+  });
+</script>
+<style>
+  @keyframes fade-in-visible {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-visible {
+    animation: fade-in-visible 1s ease-out forwards;
+  }
+</style>
 </head>
-<body>
-  <img class="logo" src="logo.png" alt="Gà Thông Minh Logo">
-  <h1>Gà Thông Minh</h1>
-  <p>Dev gà không sao, gà mà biết ò ó o là gà có tư duy!</p>
-  <div class="tag">&lt;gathongminh/&gt;</div>
+<body class="transition-colors duration-500 text-base transition-colors duration-500 bg-[#1b1e2b] text-[#c7d0d9] font-mono">
+  <header class="bg-[#232635] p-4 fixed top-0 left-0 w-full z-50 border-b border-[#3b9aff]">
+  <div class="max-w-6xl mx-auto flex justify-between items-center">
+    <h1 class="text-xl font-bold text-[#3b9aff]">NGUYEN PHUOC PHU</h1>
+    <button id="menu-toggle" class="md:hidden text-[#3b9aff] text-2xl focus:outline-none">
+      ☰
+    </button>
+    <nav id="menu" class="hidden md:flex space-x-4 text-sm">
+      <a href="#about" class="hover:text-[#3b9aff] transition-colors duration-300">About</a>
+      <a href="#projects" class="hover:text-[#3b9aff] transition-colors duration-300">Projects</a>
+      <a href="#contact" class="hover:text-[#3b9aff] transition-colors duration-300">Contact</a>
+    </nav>
+  </div>
+  <div id="mobile-menu" class="md:hidden hidden mt-2 text-center">
+    <a href="#about" class="block py-2 text-[#c7d0d9] hover:text-[#3b9aff]">About</a>
+    <a href="#projects" class="block py-2 text-[#c7d0d9] hover:text-[#3b9aff]">Projects</a>
+    <a href="#contact" class="block py-2 text-[#c7d0d9] hover:text-[#3b9aff]">Contact</a>
+  </div>
+</header>
+  <div class="h-24"></div>
+
+  <main class="text-center py-20 px-4">
+    <img src="avatar.jpg" alt="Avatar" class="mx-auto mb-6 w-24 h-24 rounded-full border-4 border-[#3b9aff] shadow-lg">
+    <h2 id="typing-text" class="text-3xl mb-4"><span id="typing-line"></span><span class="blinking-cursor">|</span></h2>
+    <p class="text-[#a6e22e] mb-6">Experienced with Java, Spring Boot, Angular, React, Python, MongoDB, MySQL and PostgreSQL.</p>
+    <a href="#contact" class="border border-[#3b9aff] px-6 py-2 rounded hover:bg-[#3b9aff] hover:text-black transition-colors duration-300">Get in touch</a>
+  </main>
+
+  <section id="about" class="max-w-3xl mx-auto py-16 px-6 transition-all duration-700 ease-in-out opacity-0 animate-fade-in">
+  <h3 class="text-2xl text-[#3b9aff] mb-4">About Me</h3>
+  <p class="text-[#c7d0d9] leading-relaxed mb-4">
+    I'm a fullstack developer passionate about building reliable systems and dynamic interfaces.
+    I specialize in both frontend and backend development:
+  </p>
+  <ul class="list-disc list-inside text-[#a6e22e] mb-4">
+    <li><strong class="text-[#3b9aff]">Frontend:</strong> Angular, React, HTML/CSS/JS, Tailwind</li>
+    <li><strong class="text-[#3b9aff]">Backend:</strong> Java (Spring Boot), Python (Flask/FastAPI), Node.js</li>
+    <li><strong class="text-[#3b9aff]">Database:</strong> PostgreSQL, MySQL, MongoDB</li>
+  </ul>
+  <p class="text-[#c7d0d9]">I love solving real-world problems and automating workflows to improve developer productivity.</p>
+  <div class="mt-6 flex flex-wrap gap-4 justify-center">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-10 h-10 glow-icon transition-transform duration-300 hover:scale-110">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="Angular" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-10 h-10 glow-icon">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-10 h-10 glow-icon">
+  </div>
+</section>
+
+<section id="projects" class="max-w-6xl mx-auto py-16 px-6 transition-all duration-700 ease-in-out opacity-0 animate-fade-in">
+  <h3 class="text-2xl text-[#3b9aff] mb-6 text-center">Project Showcase</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="border border-[#3b9aff] rounded p-4">
+      <h4 class="text-[#a6e22e] text-lg font-bold">Personal Portfolio (Angular)</h4>
+      <p class="text-[#c7d0d9]">A responsive personal portfolio built with Angular, featuring animations, routing, and deployment on GitHub Pages.</p>
+    </div>
+    <div class="border border-[#3b9aff] rounded p-4">
+      <h4 class="text-[#a6e22e] text-lg font-bold">Dev Dashboard (React)</h4>
+      <p class="text-[#c7d0d9]">An admin dashboard built with React and Chart.js, showing real-time data fetched from a mock API. Uses Tailwind for layout.</p>
+    </div>
+    <div class="border border-[#3b9aff] rounded p-4">
+      <h4 class="text-[#a6e22e] text-lg font-bold">Task Management API</h4>
+      <p class="text-[#c7d0d9]">A RESTful API built with Spring Boot and JWT authentication. Deployed on Heroku with PostgreSQL backend.</p>
+    </div>
+    <div class="border border-[#3b9aff] rounded p-4">
+      <h4 class="text-[#a6e22e] text-lg font-bold">File Sync Utility</h4>
+      <p class="text-[#c7d0d9]">A Java CLI tool to sync files across network drives using SMB and cron jobs. Optimized for Windows environments.</p>
+    </div>
+  </div>
+  <div class="text-center mt-8">
+    <a href="./cv.pdf" download class="px-6 py-2 rounded hover:bg-[#3b9aff] hover:text-black transition-colors duration-300">📄 Download CV</a>
+  </div>
+</section>
+
+<div class="h-24"></div>
+<footer class="bg-[#232635] text-center py-4 text-sm fixed bottom-0 left-0 w-full border-t border-[#3b9aff] text-[#c7d0d9]">
+  echo "Thanks for visiting. Happy coding with Java, Python, and more!" ✔️
+</footer>
+
+<audio id="type-sound" preload="auto">
+  <source src="https://www.soundjay.com/mechanical/sounds/keyboard-1.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  const texts = [
+    '> Hi, I\'m a Fullstack Developer',
+    '> I love building things with Java and React',
+    '> Let\'s create something great together'
+  ];
+  const line = document.getElementById('typing-line');
+  let textIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (textIndex >= texts.length) textIndex = 0;
+    const current = texts[textIndex];
+    if (charIndex < current.length) {
+      line.innerHTML += current.charAt(charIndex);
+      charIndex++;  
+      const delay = current.charAt(charIndex) === ' ' ? 80 : 50;
+      setTimeout(type, delay);
+    } else {
+      setTimeout(() => {
+        line.innerHTML = '';
+        charIndex = 0;
+        textIndex++;
+        type();
+      }, 1800);
+    }
+  }
+
+  // 👉 Gọi tự động khi trang load
+  document.addEventListener('DOMContentLoaded', () => {
+    type();
+  });
+</script>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuLinks = mobileMenu.querySelectorAll('a');
+
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+</script>
 </body>
 </html>
